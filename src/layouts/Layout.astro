@@ -1,57 +1,39 @@
 ---
+import "@fontsource-variable/fraunces";
+import "@fontsource-variable/newsreader";
+import "@fontsource-variable/newsreader/wght-italic.css";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/pix-shifat.png" />
-    <link rel="stylesheet" href="/Styles/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101413" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Shifat Habib" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
   </head>
-  <body>
-    <Navbar />
-    <slot  />
-    <Footer/>
+  <body class="bg-ink font-body text-paper antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: "ubuntu";
-    src: url("/public/fonts/Ubuntu-Regular.ttf");
-  }
-  @font-face {
-    font-family: "ubuntu-light";
-    src: url("/public/fonts/Ubuntu-Light.ttf");
-  }
-  @font-face {
-    font-family: "ubuntu-bold";
-    src: url("/public/fonts/Ubuntu-Bold.ttf");
-  }
-  @font-face {
-    font-family: "spacemono";
-    src: url("/public/fonts/SpaceMono-Regular.ttf");
-  }
-  @font-face {
-    font-family: "spacemono_bold";
-    src: url("/public/fonts/SpaceMono-Bold.ttf");
-  }
-  @font-face {
-    font-family: "jersey";
-    src: url("/public/fonts/Jersey25-Regular.ttf");
-  }
-  html {
-    /* background: #0e0e0e; 
-     background: #151515; */
-    background: #092537;
-  } 
-</style>

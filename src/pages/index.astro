@@ -1,114 +1,79 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Terminal from "../components/Terminal.astro";
+import Masthead from "../components/Masthead.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CaseStudy from "../components/CaseStudy.astro";
+import Currently from "../components/Currently.astro";
+import ContactFooter from "../components/ContactFooter.astro";
+
+const work = [
+  {
+    title: "Zeda CTMS",
+    meta: "Healthcare SaaS — zeda.ai",
+    href: "https://zeda.ai/",
+    years: "2022 — Present",
+    metric: {
+      value: "0",
+      label: "Production disruptions across a two-major-version migration",
+    },
+    problem:
+      "Clinical trials still run on paperwork: consent forms to sign, source documents to review, site calls to log. Zeda's CTMS replaces that workflow, which means the frontend has to handle documents and calls as first-class citizens — not as attachments.",
+    built: [
+      "I built the e-signature experience on PDF.js: a viewer where coordinators place signature and text fields on any PDF by drag-and-drop, and a companion annotation viewer for reviewing completed documents. I also built a Twilio-powered call assistant that keeps the live transcript in sync with the audio and produces AI-generated summaries after each call.",
+      "Alongside the features, I led the Vue 2→3 and Vuetify 2→3 migration incrementally on a live product, and set up the Playwright end-to-end suite and Bitbucket Pipelines CI that kept it safe.",
+    ],
+    stack: ["Vue 3", "Vuetify", "PDF.js", "Twilio", "Playwright", "Bitbucket Pipelines"],
+  },
+  {
+    title: "Olosh",
+    meta: "AI personal knowledge app — side project, in active development",
+    years: "2026 — Present",
+    metric: {
+      value: "~95%",
+      label: "Categorization accuracy on real-world notes",
+    },
+    problem:
+      "Most capture tools assume you think in English. People here think in Banglish — Bengali written in Latin script, mixed with English mid-sentence — and generic note apps can't organize it.",
+    built: [
+      "Olosh is mine end-to-end: a FastAPI backend, Llama 3.3 70B via Groq for understanding, and ChromaDB embeddings for retrieval. The core is a Banglish-first intake pipeline that reads a raw note and files it correctly — currently around 95% categorization accuracy on my own real-world notes.",
+      "It's the project where the AI work stops being a demo: prompt design, evaluation against real data, and the unglamorous plumbing between model and product.",
+    ],
+    stack: ["FastAPI", "Groq / Llama 3.3 70B", "ChromaDB", "Python"],
+  },
+  {
+    title: "Somoyer School / FluencyFirst",
+    meta: "Edtech — somoy.school",
+    href: "https://somoy.school/",
+    years: "2021 — 2022",
+    metric: {
+      value: "+30%",
+      label: "Lighthouse performance via LCP & CLS work",
+    },
+    problem:
+      "An early-stage edtech platform with one frontend engineer: me. Every screen, component decision, and performance regression was mine to own.",
+    built: [
+      "I built the modular learning system — courses, lessons, and practice flows assembled from reusable blocks — and then made it fast, lifting Lighthouse scores about 30% by fixing largest-contentful-paint and layout-shift issues rather than chasing micro-optimizations.",
+    ],
+    stack: ["Vue", "Sole frontend owner"],
+  },
+];
 ---
 
-<Layout title="Shifat Habib">
-  <main>
-    <div class="flex justify-center">
-      <div class="max-w-[1000px] mt-16 sm:mt-20 mx-4">
-        <div>
-          <div
-            class="bg-accent p-2 md:p-4 border-4 sm:border-[12px] border-terminal1 md:flex md:gap-x-4"
-          >
-            <div class="-mt-12">
-              <div
-                class="pixel md:border-none border-2 border-terminal1 bg-background w-[250px] sm:w-[380px] flex gap-x-4 p-5 sm:p-6 z-20"
-              >
-                <div class="text-white sm:text-5xl text-3xl font-jersey">
-                  >_&nbspShifat Habib
-                </div>
-                <div class="sm:flex hidden cursor bg-origin-content"></div>
-                <div class="sm:hidden flex cursor-sm"></div>
-              </div>
-            </div>
-            <div
-              class="text-terminal text-justify mt-4 md:mt-0 font-ubuntu_bold text-sm md:text-base"
-            >
-              <span class="text-terminal2">"Hey, I'm Shifat! </span>
-              Frontend engineer with 3+ years building complex web interfaces for healthcare and edtech. I like turning complex problems into clean, usable interfaces."
-            </div>
-          </div>
-        </div>
-        <div>
-          <Terminal />
-        </div>
-      </div>
-    </div>
+<Layout
+  title="Shifat Habib — Frontend Engineer"
+  description="Frontend engineer with 3+ years of Vue.js in production across healthcare SaaS and edtech, now shipping AI-powered products end-to-end."
+>
+  <Masthead />
+  <main id="main">
+    <Hero />
+
+    <section id="work" aria-labelledby="work-title" class="border-t border-line">
+      <SectionHeader index="01" title="Selected Work" titleId="work-title" />
+      {work.map((entry) => <CaseStudy {...entry} />)}
+    </section>
+
+    <Currently />
+    <ContactFooter />
   </main>
 </Layout>
-
-<style scoped>
-  .pixel {
-    box-shadow:
-      inset 0.313em 0.313em 0 rgba(0, 0, 0, 0.4),
-      inset -0.313em -0.313em 0 rgba(143, 142, 142, 0.4),
-      0 1em 0.625em -0.4em rgba(4, 4, 4, 0.8);
-    transition: linear 0.2s;
-  }
-
-  .pixel:hover {
-    box-shadow:
-      inset 0.313em 0.313em 0 rgba(0, 0, 0, 0.8),
-      inset -0.313em -0.313em 0 rgba(255, 255, 255, 0.6),
-      0 1em 0.625em -0.4em rgba(31, 30, 30, 0.8);
-  }
-
-  .pixel:before {
-    border-bottom: solid 0.25em #000;
-    border-right: solid 0.25em #000;
-  }
-
-  .pixel:after {
-    border-top: solid 0.25em #000;
-    border-left: solid 0.25em #000;
-  }
-
-  .cursor {
-    background-color: #a6ec61;
-    box-shadow:
-      inset 0.313em 0.313em 0 rgba(44, 121, 77, 0.4),
-      inset -0.313em -0.313em 0 rgba(255, 255, 255, 0.561);
-    line-height: 17px;
-    -webkit-animation: blink 2s step-end infinite;
-    animation: blink 1s step-end infinite;
-    width: 20px;
-    height: 42px;
-  }
-  .cursor-sm {
-    background: #a6ec61;
-    box-shadow:
-      inset 0.313em 0.313em 0 rgba(44, 121, 77, 0.4),
-      inset -0.313em -0.313em 0 rgba(255, 255, 255, 0.561);
-    line-height: 17px;
-    -webkit-animation: blink 2s step-end infinite;
-    animation: blink 1s step-end infinite;
-    z-index: 0 !important;
-    width: 12px;
-    height: 32px;
-    z-index: 2 !important;
-  }
-  @-webkit-keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-</style>
