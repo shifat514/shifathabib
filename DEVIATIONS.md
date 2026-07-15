@@ -21,3 +21,20 @@ Logged per Phase, smallest-correct-choice basis, per plan rule 7.
   (`#092537`), the nearest token in the same dark-navy family, preserving
   contrast against the accent band. Flagging in case a different dark tone
   was intended here.
+
+## Phase 1
+
+- **Navbar's outer container used a fixed `w-[1000px]` instead of
+  `max-w-[1000px]`.** Not something this redesign introduced — pre-existing
+  on `master`. At viewports narrower than ~1032px this pushed the mobile
+  hamburger button off-screen to the right (confirmed via a 375px
+  screenshot: the button was fully outside the visible viewport). Since
+  Phase 1.3 explicitly rebuilds the mobile menu's accessibility (focus,
+  Escape, outside click), leaving its trigger button unreachable without
+  horizontal scrolling would make that work moot, so it was fixed here as
+  `max-w-[1000px] w-full`. The identical fixed-width pattern (`w-[1000px]`
+  on a direct child of a `px-4` flex-center wrapper) also appears in
+  `index.astro`, `about.astro`, and `projects.astro`; those are left alone
+  for Phase 4's typography/mobile sweep (which owns the 320px/375px
+  no-horizontal-scroll acceptance criterion) rather than fixed piecemeal
+  now.
