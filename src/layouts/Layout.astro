@@ -1,57 +1,58 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Frontend engineer with 3+ years building healthcare and edtech interfaces. Vue, TypeScript, Playwright. Dhaka, Bangladesh.",
+} = Astro.props;
+
+const pageTitle = title ? `${title} | Shifat Habib` : "Shifat Habib — Frontend Engineer";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/pix-shifat.png" />
-    <link rel="stylesheet" href="/Styles/style.css" />
-    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link
+      rel="preload"
+      href="/fonts/Jersey25-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SpaceMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <title>{pageTitle}</title>
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/pix-shifat.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/pix-shifat.png" />
   </head>
   <body>
     <Navbar />
-    <slot  />
-    <Footer/>
+    <slot />
+    <Footer />
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: "ubuntu";
-    src: url("/public/fonts/Ubuntu-Regular.ttf");
-  }
-  @font-face {
-    font-family: "ubuntu-light";
-    src: url("/public/fonts/Ubuntu-Light.ttf");
-  }
-  @font-face {
-    font-family: "ubuntu-bold";
-    src: url("/public/fonts/Ubuntu-Bold.ttf");
-  }
-  @font-face {
-    font-family: "spacemono";
-    src: url("/public/fonts/SpaceMono-Regular.ttf");
-  }
-  @font-face {
-    font-family: "spacemono_bold";
-    src: url("/public/fonts/SpaceMono-Bold.ttf");
-  }
-  @font-face {
-    font-family: "jersey";
-    src: url("/public/fonts/Jersey25-Regular.ttf");
-  }
-  html {
-    /* background: #0e0e0e; 
-     background: #151515; */
-    background: #092537;
-  } 
-</style>

@@ -3,17 +3,17 @@ import Layout from "../layouts/Layout.astro";
 import Terminal from "../components/Terminal.astro";
 ---
 
-<Layout title="Shifat Habib">
+<Layout>
   <main>
     <div class="flex justify-center">
       <div class="max-w-[1000px] mt-16 sm:mt-20 mx-4">
         <div>
           <div
-            class="bg-accent p-2 md:p-4 border-4 sm:border-[12px] border-terminal1 md:flex md:gap-x-4"
+            class="bg-accent p-2 md:p-4 border-4 sm:border-[12px] border-surface md:flex md:gap-x-4"
           >
             <div class="-mt-12">
               <div
-                class="pixel md:border-none border-2 border-terminal1 bg-background w-[250px] sm:w-[380px] flex gap-x-4 p-5 sm:p-6 z-20"
+                class="pixel md:border-none border-2 border-surface bg-background w-[250px] sm:w-[380px] flex gap-x-4 p-5 sm:p-6 z-20"
               >
                 <div class="text-white sm:text-5xl text-3xl font-jersey">
                   >_&nbspShifat Habib
@@ -23,7 +23,7 @@ import Terminal from "../components/Terminal.astro";
               </div>
             </div>
             <div
-              class="text-terminal text-justify mt-4 md:mt-0 font-ubuntu_bold text-sm md:text-base"
+              class="text-background text-justify mt-4 md:mt-0 font-spacemono_bold text-sm md:text-base"
             >
               <span class="text-terminal2">"Hey, I'm Shifat! </span>
               Frontend engineer with 3+ years building complex web interfaces for healthcare and edtech. I like turning complex problems into clean, usable interfaces."
@@ -70,7 +70,7 @@ import Terminal from "../components/Terminal.astro";
       inset 0.313em 0.313em 0 rgba(44, 121, 77, 0.4),
       inset -0.313em -0.313em 0 rgba(255, 255, 255, 0.561);
     line-height: 17px;
-    -webkit-animation: blink 2s step-end infinite;
+    -webkit-animation: blink 1s step-end infinite;
     animation: blink 1s step-end infinite;
     width: 20px;
     height: 42px;
@@ -81,9 +81,8 @@ import Terminal from "../components/Terminal.astro";
       inset 0.313em 0.313em 0 rgba(44, 121, 77, 0.4),
       inset -0.313em -0.313em 0 rgba(255, 255, 255, 0.561);
     line-height: 17px;
-    -webkit-animation: blink 2s step-end infinite;
+    -webkit-animation: blink 1s step-end infinite;
     animation: blink 1s step-end infinite;
-    z-index: 0 !important;
     width: 12px;
     height: 32px;
     z-index: 2 !important;

@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "jersey";
+  src: url("/fonts/Jersey25-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "spacemono";
+  src: url("/fonts/SpaceMono-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "spacemono_bold";
+  src: url("/fonts/SpaceMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+html {
+  background: #092537;
+  color-scheme: dark;
+}
+
+body {
+  font-family: "spacemono", ui-monospace, Menlo, monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #081f2d;
+}
+::-webkit-scrollbar-thumb {
+  background: #476272;
+  border-radius: 100vh;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a6ec61;
+}
